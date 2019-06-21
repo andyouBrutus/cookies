@@ -17,8 +17,8 @@ var cookies = (function(window){
             console.log(error);
             return false;
         }
-    };    
-        
+    };
+
         window.get = function(name){
             try{
                 var str = this.getArray();
@@ -26,7 +26,7 @@ var cookies = (function(window){
                 for(i=0;i<str.length;i++){
                     chunk = str[i].split('=');
                     if(chunk[0].replace(' ','') === name){
-                        console.log(chunk[1]);
+                        // console.log(chunk[1]);
                         return chunk[1];
                     }else{
                         console.log('No matches');
@@ -35,7 +35,7 @@ var cookies = (function(window){
             }
             catch(error){
                 console.log(error);
-            } 
+            }
         };
         window.remove = function(name){
             if(document.cookie === 'undefined'){
@@ -48,20 +48,18 @@ var cookies = (function(window){
                 console.log(err);
             }
         };
-        
-        
+
+
         window.getArray = function(name){
-             return document.cookie ? document.cookie.split(';') : [];          
+             return document.cookie ? document.cookie.split(';') : [];
         };
         window.removeAll = function(){
-            var cookie = this.getArray(),     
+            var cookie = this.getArray(),
                 i = 0;
             for(;i<cookie.length;i++){
                 chunk = cookie[i].split('=');
                 document.cookie = chunk[0] +'='+'; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
             }
-        };    
+        };
         return window;
 }(window));
-
-
